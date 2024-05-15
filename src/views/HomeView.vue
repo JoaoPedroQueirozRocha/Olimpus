@@ -1,15 +1,19 @@
 <template>
 	<main>
 		<div class="h-full"></div>
-		<Button variant="positive" secondary> Teste </Button>
+		<OButton variant="positive" secondary> Teste </OButton>
+		<OIcon name="add" />
 	</main>
 </template>
 
 <script lang="ts">
-import Button from '@/components/Button.vue';
+import OButton from '@/components/OButton.vue';
+import OIcon from '@/components/OIcon.vue';
+
 export default {
 	components: {
-		Button,
+		OButton,
+		OIcon,
 	},
 };
 </script>
