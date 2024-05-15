@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<Button> Teste </Button>
+		<Button variant="negative"> Teste </Button>
 	</main>
 </template>
 

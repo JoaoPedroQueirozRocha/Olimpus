@@ -12,7 +12,15 @@ export default {
             'xl': '1280px',
             '2xl': '1536px',
         },
-        extend: {},
+        extend: {
+            colors: {
+                primary: '#d38200',
+                negative: '#92140c',
+                info: "#4b8f9c",
+                secondaryInfo: "#0f7173"
+            }
+        },
+
     },
     plugins: [],
 }

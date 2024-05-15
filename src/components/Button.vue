@@ -20,6 +20,17 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * @prop {string} [id]
+ * @prop {string} [name]
+ * @prop {'button' | 'reset' | 'submit'} [type='button']
+ * @prop {'primary' | 'negative' | 'positive' | 'dark-blue' | 'yellow'} [variant='primary'] Define a variante do botão.
+ * @prop {boolean} [secondary=false] - Define se o botão é secundário.
+ * @prop {boolean} [small=false] - Define se o botão é pequeno.
+ * @prop {boolean} [disabled=false] - Desabilita o botão se verdadeiro.
+ * @prop {boolean} [loading=false] - Mostra o estado de carregamento se verdadeiro.
+ * @prop {number} [progress=0] - O progresso do carregamento do botão, de 0 a 100.
+ */
 const props = withDefaults(
 	defineProps<{
 		id?: string;
@@ -47,6 +58,20 @@ const isLoading = computed((): boolean => !!(props.progress > 0 || props.loading
 
 .primary {
 	background-color: $orange-100;
+	@apply text-white;
+}
+
+.secondary {
+	color: $orange-100;
+	@apply bg-transparent border-[.175em] border-current;
+}
+
+.secondary .primary {
+	@apply text-primary hover:bg-primary-orange hover:text-white;
+}
+
+.negative {
+	background-color: $red-100;
 	@apply text-white;
 }
 
