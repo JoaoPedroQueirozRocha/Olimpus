@@ -13,6 +13,12 @@ body {
 	background-color: rgb(99, 99, 99);
 }
 
+@layer utilities {
+	.text-xxs {
+		font-size: 0.625rem;
+	}
+}
+
 a,
 .green {
 	text-decoration: none;

@@ -3,8 +3,8 @@
 		:id="id"
 		:name="name"
 		:type="type"
-		class="o-button text-xs relative inline-flex min-h-[3em] min-w-[1em] cursor-pointer items-center justify-center rounded-lg py-[1em] px-[2em font-bold] tracking-wider uppercase select-none active:scale-95 leading-[1em]"
-		:class="[{ secondary, disabled, small }, variant]"
+		class="o-button text-xs relative inline-flex min-h-[3em] min-w-[1em] cursor-pointer items-center justify-center rounded-lg py-[1em] px-[2em] font-bold tracking-wider uppercase select-none active:scale-95 leading-[1em]"
+		:class="[{ secondary, disabled, small, 'pointer-events-none': isLoading }, variant]"
 	>
 		<template v-if="$slots.default">
 			<label v-if="name || id">
@@ -24,7 +24,7 @@ import { computed } from 'vue';
  * @prop {string} [id]
  * @prop {string} [name]
  * @prop {'button' | 'reset' | 'submit'} [type='button']
- * @prop {'primary' | 'negative' | 'positive' | 'dark-blue' | 'yellow'} [variant='primary'] Define a variante do botão.
+ * @prop {'primary' | 'negative' | 'positive' | 'info' } [variant='primary'] Define a variante do botão.
  * @prop {boolean} [secondary=false] - Define se o botão é secundário.
  * @prop {boolean} [small=false] - Define se o botão é pequeno.
  * @prop {boolean} [disabled=false] - Desabilita o botão se verdadeiro.
@@ -36,7 +36,7 @@ const props = withDefaults(
 		id?: string;
 		name?: string;
 		type?: 'button' | 'reset' | 'submit';
-		variant?: 'primary' | 'negative' | 'positive' | 'dark-blue' | 'yellow';
+		variant?: 'primary' | 'negative' | 'positive' | 'info';
 		secondary?: boolean;
 		small?: boolean;
 		disabled?: boolean;
@@ -53,26 +53,43 @@ const props = withDefaults(
 const isLoading = computed((): boolean => !!(props.progress > 0 || props.loading));
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/vars.scss';
 
 .primary {
-	background-color: $orange-100;
-	@apply text-white;
-}
-
-.secondary {
-	color: $orange-100;
-	@apply bg-transparent border-[.175em] border-current;
-}
-
-.secondary .primary {
-	@apply text-primary hover:bg-primary-orange hover:text-white;
+	@apply text-white bg-primary hover:bg-heavy-orange;
 }
 
 .negative {
-	background-color: $red-100;
-	@apply text-white;
+	@apply text-white bg-negative hover:bg-heavy-red;
+}
+
+.positive {
+	@apply text-white bg-positive hover:bg-heavy-green;
+}
+
+.info {
+	@apply text-white bg-info hover:bg-heavy-cyan;
+}
+
+.secondary {
+	@apply bg-transparent border-[.175em] border-current;
+}
+
+.secondary.primary {
+	@apply text-primary hover:bg-primary hover:text-white;
+}
+
+.secondary.negative {
+	@apply text-negative hover:bg-negative hover:text-white;
+}
+
+.secondary.positive {
+	@apply text-positive hover:bg-positive hover:text-white;
+}
+
+.secondary.info {
+	@apply text-info hover:bg-info hover:text-white;
 }
 
 .label {

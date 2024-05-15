@@ -1,6 +1,7 @@
 <template>
 	<main>
-		<Button variant="negative"> Teste </Button>
+		<div class="h-full"></div>
+		<Button variant="positive" secondary> Teste </Button>
 	</main>
 </template>
 
