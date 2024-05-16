@@ -1,5 +1,6 @@
 <template>
 	<main class="flex items-center justify-center flex-row h-full w-full">
+		<OSideBar />
 		<OCard class="bg-white w-[90vh] h-[50vh] flex items-center justify-center flex-row rounded">
 			<ORoundMenu :items="items" />
 		</OCard>
@@ -12,6 +13,7 @@ import OIcon from '@/components/OIcon.vue';
 import OCard from '@/components/OCard.vue';
 import ORoundButton from '@/components/ORoundButton.vue';
 import ORoundMenu from '@/components/ORoundMenu.vue';
+import OSideBar from '@/components/OSideBar.vue';
 import { ref } from 'vue';
 export default {
 	components: {
@@ -20,6 +22,7 @@ export default {
 		OCard,
 		ORoundButton,
 		ORoundMenu,
+		OSideBar,
 	},
 	setup() {
 		const items = ref([
