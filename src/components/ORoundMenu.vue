@@ -1,5 +1,5 @@
 <template>
-	<div class="o-round-menu relative flex items-center h-fit w-fit overflow-hidden">
+	<div class="o-round-menu relative flex items-center h-fit w-fit overflow-visible">
 		<div
 			v-for="(item, index) in items"
 			:key="index"
@@ -20,6 +20,7 @@
 		</div>
 		<div class="item" :class="{ 'z-20': !isExpanded }">
 			<ORoundButton
+				icon="hardware"
 				:variant="!isExpanded ? 'primary' : 'negative'"
 				:background="isExpanded ? '#d38200' : ''"
 				@click="isExpanded = !isExpanded"

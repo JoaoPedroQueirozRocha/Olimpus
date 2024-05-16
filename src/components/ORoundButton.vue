@@ -117,7 +117,7 @@ const computedIcon = computed((): String => {
 }
 
 .no-text {
-	@apply w-[1.4em] w-[1.4em];
+	@apply w-fit;
 }
 
 .icon {
@@ -129,7 +129,7 @@ const computedIcon = computed((): String => {
 }
 
 .icon.is-hovering {
-	@apply rotate-180 transition-transform;
+	@apply rotate-[360deg] transition-transform;
 }
 
 .small .text {
