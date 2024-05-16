@@ -10,6 +10,7 @@ const props = withDefaults(
 		name?: String;
 		size?: string;
 		unfilled?: boolean;
+		type?: string;
 	}>(),
 	{
 		unfilled: false,
