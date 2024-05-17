@@ -17,14 +17,17 @@
 		@mouseover="isHovering = true"
 		@mouseout="isHovering = false"
 	>
-		<div class="flex items-center gap-1" :class="{ 'gap-3': size === 'large', 'gap-2': size === 'medium' }">
+		<div
+			class="flex items-center gap-1 item-icon"
+			:class="{ 'gap-3': size === 'large', 'gap-2': size === 'medium' }"
+		>
+			<span class="text" v-if="text">{{ text?.toUpperCase() }}</span>
 			<OIcon
 				class="icon"
 				:name="computedIcon"
 				:icon="icon"
 				:class="{ 'is-hovering': isHovering && !alwaysOpen }"
 			/>
-			<span class="text" v-if="text">{{ text?.toUpperCase() }}</span>
 		</div>
 	</button>
 </template>
@@ -79,6 +82,7 @@ const computedIcon = computed((): String => {
 	color: white;
 	position: relative;
 	display: inline-flex;
+	flex-direction: row-reverse;
 	overflow: hidden;
 }
 

@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&family=Romanesco&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind typography;
 
 #app {
 	max-width: 1280px;
@@ -12,6 +15,7 @@
 body {
 	/* background-color: rgb(99, 99, 99); */
 	background-color: rgb(243, 242, 241);
+	font-family: 'Luxurious roman', cursive;
 }
 
 @layer utilities {
@@ -43,6 +47,6 @@ a,
 	#app {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		padding: 0 2rem;
+		padding: 0 3rem;
 	}
 }

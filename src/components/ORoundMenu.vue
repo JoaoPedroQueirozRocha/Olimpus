@@ -23,7 +23,7 @@
 				icon="hardware"
 				:variant="!isExpanded ? 'primary' : 'negative'"
 				:background="isExpanded ? '#d38200' : ''"
-				@click="isExpanded = !isExpanded"
+				@click="toggleExpanded"
 			/>
 		</div>
 	</div>
@@ -40,6 +40,8 @@ const props = withDefaults(
 	}>(),
 	{}
 );
+
+const emit = defineEmits(['update:expanded']);
 
 const isExpanded = ref(false);
 const isHovering = ref<boolean[]>([]);
@@ -74,6 +76,11 @@ function calculatePositions() {
 		positions.value.push(`${x}px, ${y}px, 0`);
 	}
 }
+
+const toggleExpanded = () => {
+	isExpanded.value = !isExpanded.value;
+	emit('update:expanded', isExpanded.value);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -82,10 +89,10 @@ function calculatePositions() {
 	@apply absolute;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
-	-webkit-transition: -webkit-transform ease-out 200ms;
-	transition: -webkit-transform ease-out 200ms;
-	transition: transform ease-out 200ms;
-	transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
+	-webkit-transition: -webkit-transform ease-out 300ms;
+	transition: -webkit-transform ease-out 300ms;
+	transition: transform ease-out 300ms;
+	transition: transform ease-out 300ms, -webkit-transform ease-out 300ms;
 }
 
 .item {

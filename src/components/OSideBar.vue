@@ -7,9 +7,18 @@
 			v-if="isPhone"
 		/>
 		<div class="sidebar" ref="sidebar" :class="{ closed: !isExpanded, mobile: isPhone }">
-			<div class="flex flex-col justify-between h-full" ref="content">
+			<div class="flex flex-col justify-between" ref="content">
 				<div class="flex items-center gap-2 mb-2" v-if="!isPhone">
-					<img src="/images/logo.png" alt="" />
+					<img
+						src="/images/logo.png"
+						alt="Logo"
+						class="w-[70px]"
+						@click="
+							() => {
+								router.push('/');
+							}
+						"
+					/>
 				</div>
 				<router-link
 					@click="isPhone && adaptHeight(!isExpanded)"
@@ -38,6 +47,7 @@
 <script lang="ts">
 import OIcon from '@/components/OIcon.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
 	name: 'Menu',
@@ -68,6 +78,7 @@ export default {
 			},
 		]);
 		return {
+			router: useRouter(),
 			sidebar,
 			isPhone,
 			isExpanded,
@@ -105,11 +116,11 @@ export default {
 		},
 		adaptHeight(value: boolean) {
 			this.isExpanded = value;
-			let height = '0';
+			let height = 0;
 			if (value) {
 				const topbar = document.querySelector('.top-holder');
 				const windowHeight = window.innerHeight;
-				// height = windowHeight - topbar.scrollHeight;
+				height = windowHeight - this.sidebar.scrollHeight;
 			}
 			this.sidebar.style.height = `${height}px`;
 		},
@@ -133,6 +144,9 @@ export default {
 	overflow: hidden;
 	user-select: none;
 	transition: min-width 0.5s ease, width 0.5s ease, max-width 0.5s ease;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .sidebar-holder {
@@ -193,6 +207,7 @@ export default {
 	font-size: 22px;
 	cursor: pointer;
 	user-select: none;
+	margin-top: 2em;
 
 	&:hover {
 		color: $heavy-primary;

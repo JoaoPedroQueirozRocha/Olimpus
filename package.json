@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.13",
     "sass": "^1.77.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
