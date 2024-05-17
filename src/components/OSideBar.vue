@@ -9,7 +9,7 @@
 		<div class="sidebar" ref="sidebar" :class="{ closed: !isExpanded, mobile: isPhone }">
 			<div class="flex flex-col justify-between h-full" ref="content">
 				<div class="flex items-center gap-2 mb-2" v-if="!isPhone">
-					<!-- TODO: add logo -->
+					<img src="/images/logo.png" alt="" />
 				</div>
 				<router-link
 					@click="isPhone && adaptHeight(!isExpanded)"
@@ -25,7 +25,7 @@
 			</div>
 			<OIcon
 				@click="changeExpanded(!isExpanded)"
-				name="chevron-right"
+				name="chevron_right"
 				class="arrow"
 				:class="[isExpanded ? 'rotate-180' : 'ml-2']"
 				style="font-size: 50px"
@@ -142,6 +142,9 @@ export default {
 }
 
 .sidebar-holder.closed {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 	min-width: 100px;
 	max-width: 100px;
 }
