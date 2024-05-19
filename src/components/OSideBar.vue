@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="sidebar-holder" :class="{ closed: !isExpanded, mobile: isPhone }">
 		<OIcon
 			class="sidebar-expande-icon top-3 left-4 fixed"
 			:name="isExpanded ? 'close' : 'menu'"

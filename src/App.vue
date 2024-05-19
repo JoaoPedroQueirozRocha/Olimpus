@@ -1,5 +1,5 @@
 <template>
-	<div class="grid-template">
+	<div class="grid-template" :class="{ small: expanded && !isPhone, 'is-phone': isPhone }">
 		<OSideBar @update:isMenuOpened="changeExpanded" />
 		<div class="md:mt-14 mt-20 w-full h-fit md:px-8 content pb-8">
 			<router-view />
@@ -15,14 +15,36 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
+import { useRouter } from 'vue-router';
 import OSideBar from '@/components/OSideBar.vue';
 import ORoundMenu from './components/ORoundMenu.vue';
 import { ref } from 'vue';
-
+const router = useRouter();
 const items = ref([
-	{ icon: 'history_edu', text: 'Athena', color: '#73ccff', action: function () {} },
-	{ icon: 'diamond', text: 'Hades', color: '#360aa6', action: function () {} },
-	{ icon: 'hourglass', text: 'Chronos', color: '#494875', action: function () {} },
+	{
+		icon: 'history_edu',
+		text: 'Athena',
+		color: '#73ccff',
+		action: () => {
+			router.push('/athena');
+		},
+	},
+	{
+		icon: 'diamond',
+		text: 'Hades',
+		color: '#360aa6',
+		action: () => {
+			router.push('/hades');
+		},
+	},
+	{
+		icon: 'hourglass',
+		text: 'Chronos',
+		color: '#494875',
+		action: () => {
+			router.push('/chronos');
+		},
+	},
 ]);
 const isPhone = ref(false);
 const expanded = ref(false);
@@ -54,7 +76,6 @@ const changeExpanded = (value: boolean) => {
 	@apply w-full h-screen;
 	display: grid;
 	grid-template-columns: min-content auto;
-	margin: 0 auto;
 }
 
 .grid-template.is-phone {
@@ -77,6 +98,24 @@ header {
 
 .title {
 	@apply text-4xl font-bold mt-4;
+}
+
+.skeleton-card-title {
+	width: 30%;
+	margin-bottom: 8px;
+}
+
+.skeleton-card-content {
+	width: 100%;
+	height: 24px !important;
+}
+
+.skeleton {
+	height: 14px;
+	background: $gray-200;
+	background: linear-gradient(90deg, transparent, $gray-200, transparent);
+	background-size: 200% 100%;
+	animation: moveBar 1.5s linear infinite;
 }
 
 @keyframes moveBar {
