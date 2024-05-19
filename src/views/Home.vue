@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col gap-6 w-full h-full">
 		<div class="flex flex-col gap-6 w-[100%]">
-			<h1 class="title">Welcome to Olimpus!</h1>
+			<h1 class="title">{{ t('home.title') }}</h1>
 			<hr class="w-full h-[2px] bg-black" />
 		</div>
 		<div>
@@ -38,6 +38,8 @@ import ORoundButton from '@/components/ORoundButton.vue';
 import ORoundMenu from '@/components/ORoundMenu.vue';
 import OSideBar from '@/components/OSideBar.vue';
 import { ref, reactive } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 export default {
 	components: {
 		OButton,
@@ -53,8 +55,9 @@ export default {
 			{ name: 'Hades', color: String('#360aa6'), icon: 'diamond' },
 			{ name: 'Chronos', color: String('#494875'), icon: 'hourglass' },
 		]);
-
+		const { t } = useI18n({ useScope: 'global' });
 		return {
+			t,
 			cards,
 		};
 	},

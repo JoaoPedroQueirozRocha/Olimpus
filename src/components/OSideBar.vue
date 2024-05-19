@@ -210,7 +210,7 @@ export default {
 	margin-top: 2em;
 
 	&:hover {
-		color: $heavy-primary;
+		color: $heavy-cyan;
 		background: $orange-100;
 
 		img {

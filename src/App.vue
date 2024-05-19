@@ -18,7 +18,9 @@ import { RouterLink, RouterView } from 'vue-router';
 import { useRouter } from 'vue-router';
 import OSideBar from '@/components/OSideBar.vue';
 import ORoundMenu from './components/ORoundMenu.vue';
+import { createI18n } from 'vue-i18n';
 import { ref } from 'vue';
+
 const router = useRouter();
 const items = ref([
 	{
